@@ -23,6 +23,10 @@ class CategoryRepository {
 
     this.categories.push(category);
   }
+
+  list(): CategoryModel[] {
+    return this.categories;
+  }
 }
 
 export { CategoryRepository };
