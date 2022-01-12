@@ -1,16 +1,16 @@
 import { getRepository, Repository } from 'typeorm';
 
-import { CategoryModel } from '../../entities/Category';
+import { Category } from '../../entities/Category';
 import {
   ICategoriesRepository,
   ICreateCategoryDto,
 } from '../ICategoriesRepository';
 
 class CategoriesRepository implements ICategoriesRepository {
-  private repository: Repository<CategoryModel>;
+  private repository: Repository<Category>;
 
   constructor() {
-    this.repository = getRepository(CategoryModel);
+    this.repository = getRepository(Category);
   }
 
   async create({ name, description }: ICreateCategoryDto): Promise<void> {
@@ -22,12 +22,12 @@ class CategoriesRepository implements ICategoriesRepository {
     await this.repository.save(newCategory);
   }
 
-  async list(): Promise<CategoryModel[]> {
+  async list(): Promise<Category[]> {
     const categories = await this.repository.find();
     return categories;
   }
 
-  async findByName(name: string): Promise<CategoryModel> {
+  async findByName(name: string): Promise<Category> {
     const category = this.repository.findOne({ name });
 
     return category;
