@@ -1,6 +1,6 @@
-import { ICreateUserDto } from '../../../../../modules/accounts/dtos/ICreateUserDto';
-import { User } from '../../../../../modules/accounts/entities/User';
-import { IUsersRepository } from '../../../../../modules/accounts/repositories/IUsersRepository';
+import { ICreateUserDto } from '@modules/accounts/dtos/ICreateUserDto';
+import { User } from '@modules/accounts/entities/User';
+import { IUsersRepository } from '@modules/accounts/repositories/IUsersRepository';
 
 class UsersRepositoryInMemory implements IUsersRepository {
   users: User[] = [];
