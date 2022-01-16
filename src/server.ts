@@ -5,12 +5,13 @@ import 'express-async-errors';
 
 import { AppError } from '@errors/AppError';
 
+import createConnection from './database';
 import { router } from './routes';
 import swaggerConf from './swagger.json';
 
-import './database';
 import './shared/container';
 
+createConnection();
 const app = express();
 app.use(express.json());
 
