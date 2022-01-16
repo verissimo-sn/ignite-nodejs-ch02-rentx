@@ -1,6 +1,8 @@
 import { inject, injectable } from 'tsyringe';
 
+import { AppError } from '@errors/AppError';
 import { ICreateCarDto } from '@modules/cars/dtos/ICreateCarDto';
+import { Car } from '@modules/cars/entities/Car';
 import { ICarsRepository } from '@modules/cars/repositories/ICarsRepository';
 
 @injectable()
@@ -18,8 +20,16 @@ class CreateCarUseCase {
     daily_rate,
     fine_amount,
     license_plate,
-  }: ICreateCarDto): Promise<void> {
-    await this.carsRepository.create({
+  }: ICreateCarDto): Promise<Car> {
+    // const carAlreadyExists = await this.carsRepository.findByLicencePlate(
+    //   license_plate
+    // );
+
+    // if (carAlreadyExists) {
+    //   throw new AppError('Car already exists!');
+    // }
+
+    const newCar = await this.carsRepository.create({
       name,
       description,
       brand,
@@ -28,6 +38,8 @@ class CreateCarUseCase {
       fine_amount,
       license_plate,
     });
+
+    return newCar;
   }
 }
 
