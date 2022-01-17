@@ -1,7 +1,7 @@
 import { AppError } from '@errors/AppError';
 import { CreateCarUseCase } from '@modules/cars/useCases/createCar/CreateCarUseCase';
 
-import { CarsRepositoryInMemory } from '../repositories/in-memory/CarsRepositoryInMemory';
+import { CarsRepositoryInMemory } from '../../repositories/in-memory/CarsRepositoryInMemory';
 
 let createCarUseCase: CreateCarUseCase;
 let carsRepositoryInMemory: CarsRepositoryInMemory;
