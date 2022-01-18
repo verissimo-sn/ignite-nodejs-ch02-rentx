@@ -11,7 +11,7 @@
 # Listagem de carro
 
 **RF**
-  - Deve ser possível listar todos os carros dosponíveis.
+  - Deve ser possível listar todos os carros disponíveis.
   - Deve ser possível disponíveis pelao nome da categoria.
   - Deve ser possível disponíveis pelao nome da marca.
   - Deve ser possível disponíveis pelao nome do carro.
@@ -23,8 +23,6 @@
 
 **RF**
   - Deve ser possível cadastrar uma especificação para um carro.
-  - Deve ser possível listar todas as especificações.
-  - Deve ser possível listar todos os carro de uma especificação.
 
 **RN**
   - Não deve ser possível cadastrar uma especificação para um carro não cadastrado.
