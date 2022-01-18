@@ -1,9 +1,15 @@
+import { inject, injectable } from 'tsyringe';
+
 import { IListAvailableDto } from '@modules/cars/dtos/IListAvailableDto';
 import { Car } from '@modules/cars/entities/Car';
 import { ICarsRepository } from '@modules/cars/repositories/ICarsRepository';
 
-class ListCarsUseCase {
-  constructor(private carsRepository: ICarsRepository) {}
+@injectable()
+class ListAvailableCarsUseCase {
+  constructor(
+    @inject('CarsRepository')
+    private carsRepository: ICarsRepository
+  ) {}
 
   async execute({
     name,
@@ -19,4 +25,4 @@ class ListCarsUseCase {
   }
 }
 
-export { ListCarsUseCase };
+export { ListAvailableCarsUseCase };
