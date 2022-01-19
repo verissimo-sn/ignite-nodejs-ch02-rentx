@@ -1,7 +1,7 @@
 {
   "type": "postgres",
   "host": "localhost",
-  "username": "admin",
+  "username": "postgres",
   "password": "admin",
   "database": "rentx",
   "migrations": ["./src/database/migrations/*.ts"],
