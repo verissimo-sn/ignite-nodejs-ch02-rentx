@@ -1,19 +1,24 @@
+import { inject, injectable } from 'tsyringe';
+
 import { AppError } from '@errors/AppError';
 import { ICreateRentalDto } from '@modules/rentals/dtos/ICreateRentalDto';
 import { Rental } from '@modules/rentals/entities/Rental';
 import { IRentalsRepository } from '@modules/rentals/repositories/IRentalsRepository';
 import { IDateProvider } from '@shared/providers/DateProvider/IDateProvider';
 
+@injectable()
 class CreateRentalUseCase {
   constructor(
+    @inject('DateProvider')
     private dateProvider: IDateProvider,
+    @inject('RentalsRepository')
     private rentalsRepository: IRentalsRepository
   ) {}
 
   async execute({
     car_id,
     user_id,
-    expect_return_date,
+    expected_return_date,
   }: ICreateRentalDto): Promise<Rental> {
     const minRentHours = 24;
 
@@ -35,7 +40,7 @@ class CreateRentalUseCase {
     const dateNow = this.dateProvider.dateNow();
 
     const compareDate = this.dateProvider.compareInHours({
-      endDate: expect_return_date,
+      endDate: expected_return_date,
       startDate: dateNow,
     });
 
@@ -45,7 +50,7 @@ class CreateRentalUseCase {
     return this.rentalsRepository.create({
       car_id,
       user_id,
-      expect_return_date,
+      expected_return_date,
     });
   }
 }
