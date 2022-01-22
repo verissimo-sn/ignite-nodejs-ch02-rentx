@@ -18,7 +18,7 @@ describe('Create Car specification', () => {
     );
   });
 
-  it('shold not be able to add a new specification to a nonexistent car', async () => {
+  it('should not be able to add a new specification to a nonexistent car', async () => {
     const car_id = '12345';
     const specifications_id = ['54321'];
 
@@ -30,7 +30,7 @@ describe('Create Car specification', () => {
     }).rejects.toBeInstanceOf(AppError);
   });
 
-  it('shold be able to add a new specification to the car', async () => {
+  it('should be able to add a new specification to the car', async () => {
     const car = await carsRepositoryInMemory.create({
       name: 'Name test',
       description: 'Description test',
@@ -43,7 +43,7 @@ describe('Create Car specification', () => {
 
     const specification = await specificationsRepositoryInMemory.create({
       name: 'specification test',
-      description: 'test specificaiton',
+      description: 'test specification',
     });
 
     const specificationsCar = await createCarSpecificationUseCase.execute({
