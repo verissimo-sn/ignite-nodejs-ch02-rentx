@@ -5,7 +5,7 @@ import { CarsRepositoryInMemory } from '../../repositories/in-memory/CarsReposit
 let listAvailableCarsUseCase: ListAvailableCarsUseCase;
 let carsRepositoryInMemory: CarsRepositoryInMemory;
 
-describe('Lis available Cars', () => {
+describe('List available Cars', () => {
   beforeEach(() => {
     carsRepositoryInMemory = new CarsRepositoryInMemory();
     listAvailableCarsUseCase = new ListAvailableCarsUseCase(
