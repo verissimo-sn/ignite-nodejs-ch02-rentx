@@ -5,6 +5,7 @@ export interface ICompareDate {
 
 interface IDateProvider {
   compareInHours({ startDate, endDate }: ICompareDate): number;
+  compareInDays({ startDate, endDate }: ICompareDate): number;
   convertToUTC(date: Date): string;
   dateNow(): Date;
 }
