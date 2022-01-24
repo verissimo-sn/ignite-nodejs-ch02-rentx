@@ -65,3 +65,11 @@
 - Caso o horário de devolição seja superior ao horário previsto de entrega, deverá ser cobrado multa proporciaonal aos dias de atraso.
 - Caso haja multa, deverá ser somado ao total do aluguel.
 - o usuário deve estar logado na aplicação.
+
+# Listagem de alugueis para usuário
+
+**RF**
+- Deve ser possível realizar a busca de todos os alugueis para usuario
+
+**RN**
+- o usuário deve estar logado 
