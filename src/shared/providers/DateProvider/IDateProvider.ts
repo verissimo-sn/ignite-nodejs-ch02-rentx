@@ -8,6 +8,7 @@ interface IDateProvider {
   compareInDays({ startDate, endDate }: ICompareDate): number;
   convertToUTC(date: Date): string;
   dateNow(): Date;
+  addDays(days: number): Date;
 }
 
 export { IDateProvider };
