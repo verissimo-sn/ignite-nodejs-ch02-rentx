@@ -1,15 +1,19 @@
 import { Request, Response, NextFunction } from 'express';
 import { verify } from 'jsonwebtoken';
 
+import auth from '@config/auth';
 import { AppError } from '@errors/AppError';
-import { UsersRepository } from '@modules/accounts/repositories/implementations/UsersRepository';
+import { UsersTokenRepository } from '@modules/accounts/repositories/implementations/UsersTokenRepository';
 
 const ensureAuthenticated = async (
   req: Request,
   res: Response,
   next: NextFunction
 ) => {
+  const { secret_refresh_token } = auth;
   const bearerToken = req.headers.authorization;
+
+  const userTokensRepository = new UsersTokenRepository();
 
   if (!bearerToken) {
     throw new AppError('Token is missing', 401);
@@ -18,17 +22,19 @@ const ensureAuthenticated = async (
   const [, token] = bearerToken.split(' ');
 
   try {
-    const { sub: userId } = verify(token, '15b1c269e2207484d60e5f460eb76119');
+    const { sub: user_id } = verify(token, secret_refresh_token);
 
-    const usersRepository = new UsersRepository();
-    const user = await usersRepository.findById(userId);
+    const user = await userTokensRepository.findByUserIdAndRefreshToken(
+      user_id,
+      token
+    );
 
     if (!user) {
       throw new AppError('User does not exists', 401);
     }
 
     req.user = {
-      id: user.id,
+      id: user.user_id,
     };
 
     next();
