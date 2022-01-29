@@ -10,6 +10,7 @@ interface IDateProvider {
   dateNow(): Date;
   addDays(days: number): Date;
   addHours(hours: number): Date;
+  compareIfBefore({ startDate, endDate }: ICompareDate): boolean;
 }
 
 export { IDateProvider };
