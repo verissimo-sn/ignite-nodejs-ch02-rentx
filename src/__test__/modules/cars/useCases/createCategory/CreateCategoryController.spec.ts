@@ -28,7 +28,7 @@ describe('Create Category Controller', () => {
 
   it('should be able to create a new category', async () => {
     const {
-      body: { token },
+      body: { refresh_token },
     } = await request(app).post('/sessions').send({
       email: 'admin@admin.com',
       password: 'admin',
@@ -41,7 +41,7 @@ describe('Create Category Controller', () => {
         description: 'integration test create category',
       })
       .set({
-        Authorization: `Bearer ${token}`,
+        Authorization: `Bearer ${refresh_token}`,
       });
 
     expect(response.status).toBe(201);
@@ -49,7 +49,7 @@ describe('Create Category Controller', () => {
 
   it('should not be able to create a new category with name already exists', async () => {
     const {
-      body: { token },
+      body: { refresh_token },
     } = await request(app).post('/sessions').send({
       email: 'admin@admin.com',
       password: 'admin',
@@ -62,7 +62,7 @@ describe('Create Category Controller', () => {
         description: 'integration test create category',
       })
       .set({
-        Authorization: `Bearer ${token}`,
+        Authorization: `Bearer ${refresh_token}`,
       });
 
     expect(response.status).toBe(400);
